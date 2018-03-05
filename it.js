@@ -1,5 +1,5 @@
 var it = function(description) {
-  this.description = description
+  this.description = description;
 
   this.expect = function(expectedValue) {
     this.expected = expectedValue;
