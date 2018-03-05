@@ -9,16 +9,19 @@ var it = function(description) {
   this.toEqual = function(actual) {
     this.actual = actual;
     this._displayDescription();
-    if (this.expected === actual) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.expected === actual
   };
+
+  this.toContain = function(actual) {
+    this.actual = actual;
+    this._displayDescription();
+    return this.expected.includes(actual);
+  }
 
   this._displayDescription = function() {
     console.log(description);
-    console.log(this.expected, "expected to equal", this.actual)
+    console.log('Expected: ', this.expected, "\n  Got: ", this.actual)
   };
+
   return this;
 };
