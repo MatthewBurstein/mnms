@@ -16,7 +16,11 @@ var it = function(description) {
     this.actual = actual;
     this._displayDescription();
     return this.expected.includes(actual);
-  }
+  };
+
+  this.not = function(matcher) {
+    return !matcher;
+  };
 
   this._displayDescription = function() {
     console.log(description);
