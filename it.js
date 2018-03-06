@@ -25,7 +25,12 @@ var it = function(description) {
   this.toBeA = function(actual) {
     this.actual = actual;
     this._displayDescription();
-    return typeof this.expected
+    console.log(typeof(this.actual));
+    console.log(typeof(this.expected));
+    if (typeof(this.actual) === typeof(this.expected) ) {
+      return this.expected === actual
+    } else throw 'Failed test: ' + this.expected + ' does not contain ' + this.actual;
+
   };
 
   this.not = function(matcher) {
