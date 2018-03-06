@@ -9,13 +9,23 @@ var it = function(description) {
   this.toEqual = function(actual) {
     this.actual = actual;
     this._displayDescription();
-    return this.expected === actual
+    if (this.expected === actual) {
+      return this.expected === actual
+    } else throw 'Failed test: ' + this.expected + ' not equal to ' + this.actual;
   };
 
   this.toContain = function(actual) {
     this.actual = actual;
     this._displayDescription();
-    return this.expected.includes(actual);
+    if (this.expected.includes(actual)) {
+      return this.expected === actual
+    } else throw 'Failed test: ' + this.expected + ' does not contain ' + this.actual;
+  };
+// something is wrong with toBeA
+  this.toBeA = function(actual) {
+    this.actual = actual;
+    this._displayDescription();
+    return typeof this.expected
   };
 
   this.not = function(matcher) {
