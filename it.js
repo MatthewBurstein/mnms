@@ -9,6 +9,10 @@ var it = function(description) {
   this.toEqual = function(actual) {
     this.actual = actual;
     this._displayDescription();
+    console.log('This EXPECTED');
+    console.log(this.expected);
+    console.log('this ACTUAL');
+    console.log(this.actual);
     if (this.expected === actual) {
       return this.expected === actual
     } else throw 'Failed test: ' + this.expected + ' not equal to ' + this.actual;
