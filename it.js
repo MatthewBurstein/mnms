@@ -14,7 +14,7 @@ var it = function(description) {
     } else if (this.actual instanceof Array) {
       return JSON.stringify(actual) === JSON.stringify(this.expected);
     } else {
-      throw 'Failed test: ' + this.expected + ' not equal to ' + this.actual;
+      console.log('Failed test: ' + this.expected + ' not equal to ' + this.actual);
     }
   };
 
@@ -24,7 +24,7 @@ var it = function(description) {
     if (this.expected.includes(actual)) {
       return this.expected === actual;
     } else {
-      throw 'Failed test: ' + this.expected + ' does not contain ' + this.actual;
+      console.log('Failed test: ' + this.expected + ' does not contain ' + this.actual);
     }
   };
 
@@ -34,9 +34,9 @@ var it = function(description) {
 
   this._displayDescription = function() {
     console.log('It', description);
-    console.log('Expected: ', this.expected, "\n  Got: ", this.actual)
+    console.log('Expected: ', this.expected, "\n  Got: ", this.actual);
   };
-  
+
   // // something is wrong with toBeA
   // this.toBeA = function(actual) {
   //   this.actual = actual;
@@ -46,7 +46,7 @@ var it = function(description) {
   //   if (this.expected instanceof actual) {
   //     return true;
   //   } else {
-  //     throw 'Failed test: ' + this.expected + ' is not an instance of ' + this.actual;
+  //     console.log('Failed test: ' + this.expected + ' is not an instance of ' + this.actual);
   //   }
   //
   // };
