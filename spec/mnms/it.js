@@ -1,30 +1,33 @@
-var it = function(description) {
-  this.description = description;
+var it = function(description, callback) {
+  console.log('\tIt', description);
+  callback();
+};
 
-  this.expect = function(expectedValue) {
-    this.expected = expectedValue;
-    return this;
-  };
+
+var expect = function(expectedValue) {
+  this.expected = expectedValue;
 
   this.toEqual = function(actual) {
     this.actual = actual;
-    this._displayDescription();
+    this._displayExpectedActual();
     if (this.expected === actual) {
-      return this.expected === actual;
+      this._displaySuccessMessage(' equals ')
     } else if (this.actual instanceof Array) {
-      return JSON.stringify(actual) === JSON.stringify(this.expected);
+      JSON.stringify(actual) === JSON.stringify(this.expected) ?
+        this._displaySuccessMessage(" equals ") :
+        this._displayErrorMessage(" is not equal to ");
     } else {
-      console.log('Failed test: ' + this.expected + ' not equal to ' + this.actual);
+      this._displayErrorMessage(' not equal to ');
     }
   };
 
   this.toContain = function(actual) {
     this.actual = actual;
-    this._displayDescription();
+    this._displayExpectedActual();
     if (this.expected.includes(actual)) {
-      return this.expected === actual;
+      this._displaySuccessMessage(" contains ")
     } else {
-      console.log('Failed test: ' + this.expected + ' does not contain ' + this.actual);
+      this._errorMessage(' does not contain ')
     }
   };
 
@@ -32,33 +35,22 @@ var it = function(description) {
     return !matcher;
   };
 
-  this._displayDescription = function() {
-    console.log('It', description);
-    console.log('Expected: ', this.expected, "\n  Got: ", this.actual);
+  this._displayExpectedActual = function() {
+    console.log('\t\tExpected: ', this.expected, "\n\t\tGot: ", this.actual);
   };
 
-  // // something is wrong with toBeA
-  // this.toBeA = function(actual) {
-  //   this.actual = actual;
-  //   this._displayDescription();
-  //   console.log(typeof(this.actual));
-  //   console.log(typeof(this.expected));
-  //   if (this.expected instanceof actual) {
-  //     return true;
-  //   } else {
-  //     console.log('Failed test: ' + this.expected + ' is not an instance of ' + this.actual);
-  //   }
-  //
-  // };
+  this._displaySuccessMessage = function(successString) {
+    console.log("%c\t\tTest passed. ", "color: green; background-color: #c5ffb2;", this.expected, successString, this.actual)
+  }
 
+  this._displayErrorMessage = function(errorString) {
+    console.error("\t\tTest failed. ", this.expected, errorString, this.actual);
+  };
 
-  // Remove this
-  // function test() {
-  //     document.getElementById('content').innerHTML = '<p>' + this.expected + '</p>';
-  //
-  // }
-  // window.onload = test;
-  //
   return this;
 
-};
+}
+
+(function(callback) {
+    this.beforeEach = callback;
+})(this)
