@@ -3,6 +3,7 @@ var it = function(description, callback) {
   callback();
 };
 
+
 var expect = function(expectedValue) {
   this.expected = expectedValue;
 
@@ -50,7 +51,6 @@ var expect = function(expectedValue) {
 
 }
 
-var beforeEach = function(callback) {
-  this.beforeEachTest = true;
-  callback();
-};
+(function(callback) {
+    this.beforeEach = callback;
+})(this)
