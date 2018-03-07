@@ -1,8 +1,15 @@
-var it = function(description, callback) {
-  console.log('\tIt', description);
-  callback();
-};
+var beforeEachCallback;
+const beforeEach = function(callback) {
+  beforeEachCallback = callback;
+}
 
+var it = function(description, expectAndMatcher) {
+  console.log('\tIt', description);
+  if (beforeEachCallback !== undefined) {
+    beforeEachCallback()
+  }
+  expectAndMatcher();
+};
 
 var expect = function(expectedValue) {
   this.expected = expectedValue;
@@ -50,7 +57,3 @@ var expect = function(expectedValue) {
   return this;
 
 }
-
-(function(callback) {
-    this.beforeEach = callback;
-})(this)
