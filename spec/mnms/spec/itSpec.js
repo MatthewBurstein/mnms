@@ -57,18 +57,9 @@ describe(".beforeEach", () => {
   });
 });
 
-// describe(".typeof", () => {
-//   it("expects 1 to be a number").expect('mu').toBeA(String);
-// })
-//
-// describe(".typeof", () => {
-//   it("expects [1,2,3] to be an array").expect([1,2,3]).toBeA('string');
-// })
 
 describe("description", () => {
   it("[1, 2, 3] contains 2", () => {
     expect([1,2,3]).toContain(2);
   });
 });
-
-// describe("descroption", it("has .not()").expect(true).toEqual(it("").expect(true).not(toEqual(false)));
