@@ -1,5 +1,6 @@
 describe("htmlSelector", function() {
   it("selects an element by class", function() {
-    expect(htmlSelector('test-div')).toEqual()
+    console.log(htmlSelector('test-div')[0])
+    expect(htmlSelector('test-div')[0].innerHTML).toEqual("PLACEHOLDER")
   });
 });
