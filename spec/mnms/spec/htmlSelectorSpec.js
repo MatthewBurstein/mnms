@@ -1,15 +1,14 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
-  describe("htmlSelectorClass", function() {
+  describe("htmlSelectorClassFirst", function() {
     it("selects an element by class", function() {
-      console.log(htmlSelectorClass("test-class"));
-      expect(htmlSelectorClass("test-class")[0].innerHTML).toEqual("PLACEHOLDER");
+      expect(htmlSelectorClassFirst("test-class")).toEqual("PLACEHOLDER");
     });
   });
 
   describe("htmlSelectorID", function() {
     it("selects an element by id", function() {
-      expect(htmlSelectorId('test-id').innerHTML).toEqual("PLACEHOLDER");
+      expect(htmlSelectorId('test-id')).toEqual("PLACEHOLDER");
     });
   });
 
