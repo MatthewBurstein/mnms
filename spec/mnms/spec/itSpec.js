@@ -10,7 +10,7 @@ describe(".toEqual", () => {
     expect(1).toEqual(1);
   });
 
-  it("expects 1 not to equal 1", () => {
+  it("expects 2 not to equal 1", () => {
     expect(1).toEqual(2);
   });
 
