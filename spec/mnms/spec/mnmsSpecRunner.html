@@ -11,22 +11,27 @@
 </head>
 
 <body>
-
+  <div id="test-id" class="test-class">PLACEHOLDER</div>
+  <div class="test-button-container" id="test-button-container">
+    <button id="test-button" type="button" name="button" onclick="getElementById('test-button-container').innerHTML = 'buttonHasBeenClicked'">Click Me</button>
+  </div>
   <div id="content">
 
   </div>
+
+  <script src="../describe.js"></script>
+  <script src="../it.js"></script>
+  <script src="../htmlSelector.js"></script>
+  <script src="../clickButton.js"></script>
+  <script src="../spyOn.js"></script>
+
+  <!-- include source files here... -->
+  <!-- <script src="src/game.js"></script> -->
+
+  <!-- include spec files here... -->
+  <script src="itSpec.js"></script>
+  <script src="htmlSelectorSpec.js"></script>
+  <script src="featureTest.js"></script>
+  <script src="spyOnSpec.js"></script>
 </body>
-<script type="text/javascript">
-  // console.log(document.getElementById("content"));
-  // document.getElementById('content').innerHTML = '<p>' + this.expected + '</p>';
-</script>
-<script src="../describe.js"></script>
-<script src="../it.js"></script>
-
-<!-- include source files here... -->
-<!-- <script src="src/game.js"></script> -->
-
-<!-- include spec files here... -->
-<script src="itSpec.js"></script>
-
 </html>
