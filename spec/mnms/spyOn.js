@@ -1,19 +1,28 @@
-var spyOn = function(object, method) {
-  let spy = {
-    args: [],
-    count: function() {
-      return this.args.length;
-    }
-  };
+(function(module) {
 
-  let original = object[method];
-  object[method] = function() {
-    let args = [].slice.apply(arguments)
-    spy.args.push(args);
-    spy.count();
-    return original.call(object, args);
-  };
+  console.log(module)
 
-  return Object.freeze(spy);
+  var spyOn = function(object, method) {
+    let spyInternal = {
+      args: [],
+      count: function() {
+        return this.args.length;
+      }
+    };
 
-}
+    let original = object[method];
+    object[method] = function() {
+      let args = [].slice.apply(arguments)
+      spyInternal.args.push(args);
+      spyInternal.count();
+      return original.call(object, args);
+    };
+
+    module.spy = spyInternal;
+
+    return Object.freeze(spyInternal);
+  }
+
+  module.spyOn = spyOn;
+
+})(this);

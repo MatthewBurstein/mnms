@@ -55,16 +55,29 @@ var it = function(description, expectAndMatcher) {
   expectAndMatcher();
 };
 
-var expect = function(expectedValue) {
-  this.expected = expectedValue;
+var expect = function(actualValue) {
+  this.actual = actualValue;
 
-  this.toEqual = function(actual) {
-    this.actual = actual;
+  this.toHaveBeenCalled = function() {
+    console.log(this)
+    // this._diplayExpectedActual();
+    if (spy !== undefined && spy.count() > 0) {
+      console.log("success")
+      // this._displaySuccessMessage("was called successfully")
+    } else {
+      console.log("failure")
+      this._displaySuccessMessage("was not called")
+    }
+  }
+
+  this.toEqual = function(expected) {
+    console.log(this);
+    this.expected = expected;
     this._displayExpectedActual();
-    if (this.expected === actual) {
+    if (this.actual === expected) {
       this._displaySuccessMessage(' equals ')
     } else if (this.actual instanceof Array) {
-      JSON.stringify(actual) === JSON.stringify(this.expected) ?
+      JSON.stringify(expected) === JSON.stringify(this.actual) ?
         this._displaySuccessMessage(" equals ") :
         this._displayErrorMessage(" is not equal to ");
     } else {
@@ -72,10 +85,10 @@ var expect = function(expectedValue) {
     }
   };
 
-  this.toContain = function(actual) {
-    this.actual = actual;
+  this.toContain = function(expected) {
+    this.expected = expected;
     this._displayExpectedActual();
-    if (this.expected.includes(actual)) {
+    if (this.actual.includes(expected)) {
       this._displaySuccessMessage(" contains ")
     } else {
       this._errorMessage(' does not contain ')
@@ -87,7 +100,7 @@ var expect = function(expectedValue) {
   };
 
   this._displayExpectedActual = function() {
-    console.log('\t\tExpected: ', this.expected, "\n\t\tGot: ", this.actual);
+    console.log('\t\tExpected: ', this.expected, "\n\t\tGot: ", this.expected);
     console.log(this.expected);
     var outputExpected = 'Expected: ' + this.expected;
     var outputActual = 'Got: ' + this.actual
@@ -96,14 +109,14 @@ var expect = function(expectedValue) {
   };
 
   this._displaySuccessMessage = function(successString) {
-    console.log("%c\t\tTest passed. ", "color: green; background-color: #c5ffb2;", this.expected, successString, this.actual)
-    var successMessage= 'Test passed ' + this.expected + successString + this.actual;
+    console.log("%c\t\tTest passed. ", "color: green; background-color: #c5ffb2;", this.actual, successString, this.expected)
+    var successMessage= 'Test passed ' + this.actual + successString + this.expected;
     outputpass(successMessage);
   }
 
   this._displayErrorMessage = function(errorString) {
-    console.error("\t\tTest failed. ", this.expected, errorString, this.actual);
-    var errorMessage= 'Test failed ' + this.expected + errorString + this.actual;
+    console.error("\t\tTest failed. ", this.actual, errorString, this.expected);
+    var errorMessage= 'Test failed ' + this.actual + errorString + this.expected;
     outputfail(errorMessage);
   };
 

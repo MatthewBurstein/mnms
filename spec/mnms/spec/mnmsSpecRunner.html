@@ -11,20 +11,36 @@
 </head>
 
 <body>
+
   <img src="../../../images/devitomm.jpg">
+  <div id="content">
+
+  </div>
+  <!-- ******Feature test code*******
   <div id="test-id" class="test-class">PLACEHOLDER</div>
   <div class="test-button-container" id="test-button-container">
     <button id="test-button" type="button" name="button" onclick="getElementById('test-button-container').innerHTML = 'buttonHasBeenClicked'">Click Me</button>
   </div>
-  <div id="content">
 
+
+  <form class="" action="index.html" method="post">
+    <input type="text" id='test-text-field'>
+    <button type="button" name="submit-form" id="test-form-button" onclick="var text = getElementById('test-text-field').value; document.getElementById('test-form-output-container').innerHTML = text"> Booton</button>
+  </form>
+
+  <div class="" id="test-form-output-container">
   </div>
+******Feature test tests*******
+  <script src="featureTest.js"></script>
+  <script src="spyOnSpec.js"></script>
+  ************** -->
 
   <script src="../describe.js"></script>
   <script src="../it.js"></script>
   <script src="../htmlSelector.js"></script>
   <script src="../clickButton.js"></script>
   <script src="../spyOn.js"></script>
+  <script src="../FillFormText.js"></script>
 
   <!-- include source files here... -->
   <!-- <script src="src/game.js"></script> -->
@@ -32,7 +48,5 @@
   <!-- include spec files here... -->
   <script src="itSpec.js"></script>
   <script src="htmlSelectorSpec.js"></script>
-  <script src="featureTest.js"></script>
-  <script src="spyOnSpec.js"></script>
 </body>
 </html>
