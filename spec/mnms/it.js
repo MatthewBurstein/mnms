@@ -4,11 +4,44 @@ const beforeEach = function(callback) {
 }
 
 var output = function(description) {
-  var node = document.createElement("P");
+  var node = document.createElement("p");
   var textnode = document.createTextNode(description);
   console.log(textnode);
   node.appendChild(textnode);
   document.getElementById("content").appendChild(node);
+};
+
+var outputfail = function(description) {
+  var node = document.createElement("h3");
+  var textnode = document.createTextNode(description);
+  console.log(textnode);
+  node.appendChild(textnode);
+  document.getElementById("content").appendChild(node);
+};
+
+var outputpass = function(description) {
+  var node = document.createElement("h2");
+  var textnode = document.createTextNode(description);
+  console.log(textnode);
+  node.appendChild(textnode);
+  document.getElementById("content").appendChild(node);
+
+  // var mmleft = document.createElement('img');
+  // var img = document.getElementByTagName('img');
+  // var att = document.createAttribute("src");
+  // att.value = "../../../images/mmright.jpg";
+  // img.setAttributeNode(att);
+  // // var leftimg = createTextNode('src="../../../images/mmright.jpg"');
+  // // mmleft.appendChild(leftimg);
+  //
+  // // mmleft.value = "../../../images/mmleft.jpg";
+  // // var mmright = document.createElement("img") '<img src="../../../images/mmright.jpg">'
+  // var node = document.createElement("h2");
+  // var textnode = document.createTextNode(description);
+  // console.log(textnode);
+  // node.appendChild(textnode);
+  // document.getElementById("content").appendChild(node);
+  // document.getElementById("content").appendChild(mmleft);
 };
 
 
@@ -78,13 +111,13 @@ var expect = function(expectedValue) {
   this._displaySuccessMessage = function(successString) {
     console.log("%c\t\tTest passed. ", "color: green; background-color: #c5ffb2;", this.expected, successString, this.actual)
     var successMessage= 'Test passed ' + this.expected + successString + this.actual;
-    output(successMessage);
+    outputpass(successMessage);
   }
 
   this._displayErrorMessage = function(errorString) {
     console.error("\t\tTest failed. ", this.expected, errorString, this.actual);
     var errorMessage= 'Test failed ' + this.expected + errorString + this.actual;
-    output(errorMessage);
+    outputfail(errorMessage);
   };
 
   return this;
