@@ -25,7 +25,20 @@ var it = function(description, expectAndMatcher) {
 var expect = function(expectedValue) {
   this.expected = expectedValue;
 
+  this.toHaveBeenCalled = function() {
+    console.log(this)
+    // this._diplayExpectedActual();
+    if (spy !== undefined && spy.count() > 0) {
+      console.log("success")
+      // this._displaySuccessMessage("was called successfully")
+    } else {
+      console.log("failure")
+      this._displaySuccessMessage("was not called")
+    }
+  }
+
   this.toEqual = function(actual) {
+    console.log(this);
     this.actual = actual;
     this._displayExpectedActual();
     if (this.expected === actual) {

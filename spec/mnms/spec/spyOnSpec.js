@@ -15,6 +15,6 @@ describe("spyOn", () => {
 
     plane.service("pirelli");
 
-    expect(servicedTyres).toEqual(2);
+    expect(plane.changeTyre).toHaveBeenCalled();
   });
 });
