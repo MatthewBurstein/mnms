@@ -6,6 +6,18 @@
   <title> YummyMnMs spec runner </title>
   <link rel="shortcut icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Plain-M%26Ms-Pile.jpg/1200px-Plain-M%26Ms-Pile.jpg">
   <!-- <link rel="stylesheet" href="lib/jasmine-2.3.4/jasmine.css"> -->
+
+</head>
+
+<body>
+  <div id="test-id" class="test-class">PLACEHOLDER</div>
+  <div class="test-button-container" id="test-button-container">
+    <button id="test-button" type="button" name="button" onclick="getElementById('test-button-container').innerHTML = 'buttonHasBeenClicked'">Click Me</button>
+  </div>
+  <div id="content">
+
+  </div>
+
   <script src="../describe.js"></script>
   <script src="../it.js"></script>
   <script src="../htmlSelector.js"></script>
@@ -20,15 +32,5 @@
   <script src="htmlSelectorSpec.js"></script>
   <script src="featureTest.js"></script>
   <script src="spyOnSpec.js"></script>
-</head>
-
-<body>
-  <div id="test-id" class="test-class">PLACEHOLDER</div>
-  <div class="test-button-container" id="test-button-container">
-    <button id="test-button" type="button" name="button" onclick="getElementById('test-button-container').innerHTML = 'buttonHasBeenClicked'">Click Me</button>
-  </div>
-  <div id="content">
-
-  </div>
 </body>
 </html>
