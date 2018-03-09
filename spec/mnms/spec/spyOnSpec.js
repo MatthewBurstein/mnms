@@ -7,7 +7,7 @@ describe("spyOn", () => {
       },
       service: function(brand) {
         this.changeTyre(brand);
-        this.changeTyre(brand);
+        this.changeTyre('michellin');
       }
     }
 
@@ -15,6 +15,7 @@ describe("spyOn", () => {
 
     plane.service("pirelli");
 
-    expect(plane.changeTyre).toHaveBeenCalled();
+    expect(spy.numberOfTimesCalled).toEqual(2);
+    expect(spy.arrayOfArguments).toContain(["pirelli"]);
   });
 });
