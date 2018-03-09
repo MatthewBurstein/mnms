@@ -5,15 +5,20 @@
   <meta charset="utf-8">
   <title>MNMS</title>
   <script src="lib/notes.js" type="text/javascript"></script>
-  <!-- <script src="lib/controller.js" type="text/javascript"></script> -->
+  <script src="lib/list.js" type="text/javascript"></script>
 </head>
 
 <body>
-  <textarea rows="4" cols="50" name="comment" form="myForm">
-    </textarea>
-    <button onclick="createNote()">Add</button>
-  <div id="note"></div>
-  <p id="text"></p>
+
+  <form>
+    <textarea id="note-body" rows="4" cols="50" name="comment" form="myForm">
+  </textarea>
+    <button id="add-note">Add</button>
+  </form>
+
+  <div id="note-list"></div>
+
+
   <script type="text/javascript" src="lib/interface.js"></script>
 </body>
 
