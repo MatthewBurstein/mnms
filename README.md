@@ -11,6 +11,8 @@ Type into the terminal: 'npm install mnmsplus'
 * Require all of your spec and model files in the default 'SpecRunner.html' file that came with your install. Ensure you leave in the default requirements, as this requires in the code needed to run the testing framework
 * Open the 'SpecRunner.html' file. This will run your tests and output the results in your browser
 
+![screenshot](https://i.imgur.com/14UYkvY.png)
+
 ## How to run tests
 The testing framework includes the following structure:
 * 'describe' blocks that your tests will fit within
@@ -83,3 +85,33 @@ describe('fills a form', function() {
 });
  ```
 * *Note: Requires selenium or equivalent library to visit the page you want to test
+
+### Spies
+
+Spies can be used to test the number of times a method was called, and the arguments supplied each time.
+
+#### Example using spies
+
+```javascript
+describe("changeTyre", function() {
+  it("calls .changeTyre() twice", function() {
+    var servicedTyres = 0
+    var car = {
+      changeTyre: function(brand) {
+        servicedTyres += 1;
+      },
+      service: function(brand) {
+        this.changeTyre(brand);
+        this.changeTyre(brand);
+      }
+    }
+
+    spyOn(plane, "changeTyre")
+
+    plane.service("pirelli");
+
+    expect(spy.numberOfTimesCalled).toEqual(2);
+    expect(spy.arrayOfArguments).toContain(["pirelli"]);
+  });
+});
+```
