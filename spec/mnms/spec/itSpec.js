@@ -63,3 +63,17 @@ describe("description", () => {
     expect([1,2,3]).toContain(2);
   });
 });
+
+
+describe(".toEqual", () => {
+
+  var undefinedVar;
+
+  it("has property toEqual", () => {
+    expect(it.toEqual).not(toEqual(undefinedVar));
+  });
+
+  it("expects 1 to equal 1", () => {
+    expect(1).toEqual(1);
+  });
+});

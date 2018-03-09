@@ -5,7 +5,7 @@
 *
 
 How to install
-Type into the terminal: 'npm install mnms'
+Type into the terminal: 'npm install mnmsplus'
 
 ## How to use
 * Require all of your spec and model files in the default 'SpecRunner.html' file that came with your install. Ensure you leave in the default requirements, as this requires in the code needed to run the testing framework
