@@ -106,9 +106,9 @@ describe("changeTyre", function() {
       }
     }
 
-    spyOn(plane, "changeTyre")
+    spyOn(car, "changeTyre")
 
-    plane.service("pirelli");
+    car.service("pirelli");
 
     expect(spy.numberOfTimesCalled).toEqual(2);
     expect(spy.arrayOfArguments).toContain(["pirelli"]);
