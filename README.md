@@ -2,9 +2,8 @@
 
 ##  Description
 * 'mnms' is a custom testing library built from the ground up using pure Javascript (no Javscript libraries were used)
-*
 
-How to install
+## How to install
 Type into the terminal: 'npm install mnmsplus'
 
 ## How to use
